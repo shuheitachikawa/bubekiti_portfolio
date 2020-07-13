@@ -1,0 +1,386 @@
+/*---------------------------------
+共通設定
+---------------------------------*/
+/*
+色設定
+*/
+$blue:#002C81;
+$white:#fff;
+$grey:#f5f5f5;;
+$font-black:#333333;
+
+/*
+フォント設定
+*/
+html{
+  font-size: 10px;
+  font-family: Noto, "Hiragino Sans", Helvetica, Arial, sans-serif;
+  color:$font-black;
+}
+
+$topview-font : "Rockwell";
+$topview-font : "Spinnaker, sans-serif";
+
+.title{
+  font-size: 3.2rem;
+  font-family: $topview-font;
+  letter-spacing: 0.2rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.ja-title{
+  display: block;
+  margin-top: 20px;
+  font-size: 1.8rem;
+}
+
+h3{
+  font-size: 2.0rem;
+  letter-spacing: 0.2rem;
+  font-weight: bold;
+  z-index: 10;
+}
+
+p,a{
+  font-size: 1.6rem;
+}
+
+/*
+モジュール設定
+*/
+a:hover{
+  transition:.3s;
+  opacity:.8;
+}
+
+img{
+  width:100%;
+  height:auto;
+}
+
+body{
+  background-color: $blue;
+}
+
+.container{
+  width:90%;
+  max-width:1080px;
+  margin:0 auto ;
+}
+
+@mixin section-set($color){
+  background-color: $color;
+  min-height:100vh;
+  padding:80px 0;  
+}
+
+
+/*---------------------------------
+ヘッダー
+---------------------------------*/
+$header-width : 20vw;
+header{
+  color:$white;
+  font-family: $topview-font;
+  position: fixed;
+  width:$header-width;
+  height:100vh;
+  .global-nav{
+    height:350px;
+    text-align: center;
+    margin-top: 20vh;
+    ul{
+      height:100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      li{
+        font-size: 1.5rem;
+        letter-spacing: 0.2rem;
+      }
+    }
+  }
+}
+
+.scroll-area{
+  position: absolute;
+  top: 100vh;
+  width:100vw - $header-width;
+  margin-left: $header-width;
+}
+
+/*---------------------------------
+共通設定ここまで
+---------------------------------*/
+
+
+/*---------------------------------
+トップビュー
+---------------------------------*/
+.top-view{
+  color:$white;
+  font-family: $topview-font;
+  width:100vw - $header-width;
+  height:100vh;
+  position: fixed;
+  left:$header-width;
+  display: flex;
+  align-items: center;
+  background-image: url(../img/stripe.png);
+  background-repeat: repeat;
+  border:1px dashed #3b3b3b;
+  overflow: hidden;
+  &__title{
+    font-size: 72px;
+    font-weight: 600;
+    margin-left: 50px;
+    &--kana{
+      font-size: 1.2rem;
+      margin-left: 5px;
+    }
+  }
+  &__sub-title{
+    font-size: 35px;
+    margin-left: 50px;
+    letter-spacing: 0.1rem;
+  }
+  &__svg{
+    z-index: 1;
+    height: 100vw - $header-width;
+    width: 100vh;
+    position: fixed;
+    top:100vh;
+    right:0;
+    transform: rotate(90deg);  /* 2D(平面)で回転 */
+    transform-origin: 100% 0 0;
+    #wave{
+      fill:$white;
+    }
+  }
+  &__btn{
+    $diameter:150px;
+    z-index: 10;
+    width:$diameter;
+    height:$diameter;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 150px;
+    font-size: 1.3rem;
+    position: absolute;
+    right:48%;
+    bottom:50px;
+    box-shadow: 0px 40px 40px rgba(0, 25, 72, .6);
+    backdrop-filter: blur(15px);
+    transition: background-color 0.6s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    &:hover{
+     box-shadow:none;
+     background-color: rgba(#002C81,0.3);
+     cursor: pointer;
+    }
+  }
+}
+
+/*---------------------------------
+サービス内容
+---------------------------------*/
+.service{
+  @include section-set($white);
+  position: relative;
+  &__maintxt{
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 50px;
+    line-height: 1.8;
+  }
+  &__items{
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    &:after{
+      content:"";
+      width:30%;
+    }
+  }
+  &__item{
+    width:30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  &__circle{
+    position: absolute;
+    top:7%;
+    background-color:$grey;
+    width:90%;
+    border-radius: 50%;
+    z-index: 0;
+    &:before{
+      content:"";
+      display: block;
+      padding-top: 100%;
+    }
+  }
+  &__icon{
+    margin-top: 30px;
+    height:40px;
+    z-index: 10;
+  }
+  &__detail{
+    margin-top: 30px;
+    line-height: 1.8;
+    z-index: 10;
+  }
+  &__note{
+    font-size: 1.4rem;
+    line-height: 1.8;
+    letter-spacing: .1rem;
+    margin-top: 100px;
+    text-align: center;
+  }
+}
+
+
+/*---------------------------------
+自己紹介
+---------------------------------*/
+.about{
+  @include section-set($grey);
+  &__intro{
+    margin-top: 50px;
+  }
+  &__table{
+    margin: 0 auto;
+    width:80%;
+    font-size: 1.4rem;
+    letter-spacing: .1em;
+    tr{
+      line-height:40px;
+    }
+    td{
+      border-bottom: 1px solid #797979;
+    }
+    &__skills{
+      line-height: 0;
+    }
+  }
+}
+.history{
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  &__item{
+    width: 30%;
+  }
+  &__year{
+    text-align: center;
+    font-size: 2rem;
+  }
+  &__detail{
+    margin-top: 30px;
+    text-align: center;
+  }
+}
+
+/*---------------------------------
+料金
+---------------------------------*/
+.price{
+  @include section-set($white);
+  &__exp{
+    margin-top: 50px;
+    text-align: center;
+  }
+}
+
+/*---------------------------------
+制作実績
+---------------------------------*/
+.work{
+  @include section-set($grey);
+  height:auto;
+  &__btn-area{
+    margin-top: 70px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+  }
+  &__btn-exp{
+    display: inline-block;
+    font-size: 1.2rem;
+    margin-right: 30px;
+  }
+  &__btn{
+    width:90px;
+    line-height: 3;
+    border-radius: 3px;
+    margin: 0 10px;
+    &:hover{
+      font-weight: 600;
+    }
+    &.active{
+      font-weight: 600;
+      background-color: #c5cfe4;
+    }
+  }
+  &__area{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  &__area:after{
+    content:"";
+    width:30%;
+  }
+}
+.article{
+  width:30%;
+  box-shadow: 6px 6px 18px #9c9c9c;
+  text-align: center;
+  margin-bottom: 50px;
+  transition:.3s;
+  position:relative;
+  &__title{
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 2;
+  }
+  &:hover{
+    box-shadow: none;
+    top:1px;
+  }
+}
+
+/*---------------------------------
+問い合わせ
+---------------------------------*/
+.contact{
+  @include section-set($white);
+  &__exp{
+    margin-top: 50px;
+    text-align: center;
+  }
+}
+
+/*---------------------------------
+フッター
+---------------------------------*/
+footer{
+  color:$white;
+  background-color: rgb(75, 75, 75);
+  background-color: $blue;
+  height:90px;
+  text-align: center;
+  .footer__icon{
+    margin: 10px 0;
+  }
+  .copy-write{
+    font-size: 1.1rem;
+  }
+}
