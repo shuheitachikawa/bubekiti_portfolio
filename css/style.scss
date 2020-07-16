@@ -18,7 +18,7 @@ html{
   color:$font-black;
 }
 
-$topview-font : "Rockwell";
+//$topview-font : "Rockwell";
 $topview-font : "Spinnaker, sans-serif";
 
 .title{
@@ -41,7 +41,6 @@ $topview-font : "Spinnaker, sans-serif";
   background-color: $blue;
   border-radius: 1px;
 }
-
 
 
 .ja-title{
@@ -73,6 +72,41 @@ img{
   width:100%;
   height:auto;
 }
+
+//ハンバーガーメニュー
+.menu-trigger{
+  z-index: 9999;
+  position: fixed;
+  top:25px;
+  right:25px;
+  width:22px;
+  height:16px;
+  span{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color:black;
+    border-radius: 2px;
+    transition: .3s;
+  }
+}
+.menu-trigger span:nth-of-type(1) {top: 0;}
+.menu-trigger span:nth-of-type(2) {top: 7px;}
+.menu-trigger span:nth-of-type(3) {bottom: 0;}
+.menu-trigger.active span:nth-of-type(1) {
+  transform: translateY(7px) rotate(-315deg);
+  background-color: $white;
+}
+.menu-trigger.active span:nth-of-type(2) {
+  opacity: 0;
+  background-color: $white;
+}
+.menu-trigger.active span:nth-of-type(3) {
+  transform: translateY(-7px) rotate(315deg);
+  background-color: $white;
+}
+
 
 body{
   background-color: $blue;
@@ -194,17 +228,20 @@ footer{
   border:1px dashed #3b3b3b;
   overflow: hidden;
   &__title{
-    font-size: 72px;
+    width:100%;
+    font-size: 6rem;
     font-weight: 600;
-    margin-left: 50px;
-    &--kana{
+    margin-left: 40px;
+    &::after{
+      content:'[ぶべきち]';
       font-size: 1.2rem;
       margin-left: 5px;
     }
   }
   &__sub-title{
-    font-size: 35px;
-    margin-left: 50px;
+    margin-top: 1rem;
+    font-size: 3rem;
+    margin-left: 40px;
     letter-spacing: 0.1rem;
   }
   &__svg{
@@ -227,17 +264,17 @@ footer{
     height:$diameter;
     border-radius: 50%;
     text-align: center;
-    line-height: 150px;
+    line-height: $diameter;
     font-size: 1.3rem;
     position: absolute;
     right:48%;
-    bottom:50px;
+    bottom:60px;
     box-shadow: 0px 40px 40px rgba(0, 25, 72, .6);
     backdrop-filter: blur(15px);
-    transition: background-color 0.6s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: .4s; 
     &:hover{
      box-shadow:none;
-     background-color: rgba(#002C81,0.3);
+     background-color: rgba($blue,0.3);
      cursor: pointer;
     }
   }
@@ -293,7 +330,7 @@ footer{
   }
   &__detail{
     margin-top: 30px;
-    line-height: 1.8;
+    line-height: 1.6;
     z-index: 10;
   }
   &__note{
@@ -439,13 +476,15 @@ footer{
     border-bottom: 60px solid $grey;
   }
 }
+.tbl-l{
+  display: none;
+}
 
 /*---------------------------------
 制作実績
 ---------------------------------*/
 .work{
   @include section-set($grey);
-  height:auto;
   &__btn-area{
     margin-top: 70px;
     text-align: center;
@@ -461,8 +500,6 @@ footer{
   }
   &__btn-item{
     display: inline-block;
-  }
-  &__btn-item{
     width:90px;
     line-height: 3;
     border-radius: 3px;
@@ -536,6 +573,7 @@ footer{
 .contact{
   @include section-set($white);
   margin-bottom: 0px;
+  padding-bottom:30px;
   &__exp{
     margin-top: 80px;
     text-align: center;
@@ -702,5 +740,416 @@ footer{
   .next{
     margin-right: 0;
     margin-left: auto;
+  }
+}
+
+
+@media (max-width:1025px){ 
+  html{
+    font-size: 9px;
+  }
+
+  .container{
+    width: 95%;
+  }
+
+  header{
+    .global-nav{
+      height:300px;
+    }
+  }
+
+  /*---------------------------------
+  サービス内容
+  ---------------------------------*/
+  .service{
+    padding-top: 80px;
+    &__items{
+      margin-top: 50px;
+    }
+    &__item{
+      width:32%;
+    }
+    &__name{
+      font-size: 1.6rem;
+    }
+    &__detail{
+      font-size: 1.4em;
+      margin-top: 10px;
+    }
+    &__note{
+      margin-top: 50px;
+    }
+  }
+
+
+  /*---------------------------------
+  自己紹介
+  ---------------------------------*/
+  .about{
+   // margin-top: 40px;
+   &__intro{
+     margin-top: 50px;
+   }
+   &__history{
+     margin-top: 50px;
+   }
+  }
+
+}
+
+
+//iPad縦画面
+@media (max-width:800px){
+
+
+  /*---------------------------------
+  トップビュー
+  ---------------------------------*/
+  .top-view{
+    &__title::after{
+      display: block;
+    }
+    &__sub-title{
+      line-height: 1px;
+      margin-top: 30px;
+    }
+    &__btn{
+      bottom: 100px;
+    }
+  }
+
+  /*---------------------------------
+  サービス内容
+  ---------------------------------*/
+  .service{
+    &__items{
+      text-align: center;
+      margin-top: 20px;
+      flex-direction: column;
+      }
+    &__item{
+      width:300px;
+      min-height:260px;
+      margin: 70px auto 0;
+      text-align: left;
+    }
+    &__circle{
+      top:-25px;
+      width:100%;
+    }
+    &__icon{
+      margin-top: 10px;
+    }
+  }
+
+
+  /*---------------------------------
+  自己紹介
+  ---------------------------------*/
+  .about{
+    &__table{
+      tr{
+        line-height: 35px;
+      }
+    }
+  }
+  .history{
+    margin-top: 30px;
+    flex-direction: column;
+    &__item{
+      width:80%;
+      margin: 20px auto 0;
+      text-align: center;
+    }
+    &__year{
+      text-align: left;
+    }
+    &__detail{
+      margin-top: 10px;
+      text-align: left;
+    }
+    &__arrow{
+      transform:rotate(135deg);
+      margin-left: 10%;
+      margin-top: 20px;
+    }
+  }
+
+
+  /*---------------------------------
+  制作実績
+  ---------------------------------*/
+  .article{
+    width:47%;
+  }
+
+
+  /*---------------------------------
+  問い合わせ
+  ---------------------------------*/
+  .contact{
+    input,textarea{
+      width:400px;
+      max-width:400px;
+    }
+  }
+}
+
+
+
+//ここからヘッダー無し
+@media (max-width:690px){
+
+  
+/*---------------------------------
+ヘッダー
+---------------------------------*/
+$header-width : 0;
+header{
+  display: none;
+  position:fixed;
+  top:0;
+  right:0;
+  height:50vh;
+  width:50vw;
+  background-color: $blue;
+  z-index: 1000;
+  opacity:70%;
+  .global-nav{
+    height:80%;
+    margin-top: 30%;
+  }
+}
+
+.scroll-area{
+  width: 100vw;
+  margin-left: 0;
+}
+
+
+/*---------------------------------
+トップビュー
+---------------------------------*/
+.top-view{
+  width: 100vw;
+  left:0;
+  &__svg{
+    height:100vw;
+    transform-origin: 100% 0 0;
+  }
+  &__btn{
+    left:50%;
+    transform: translate(-50%); 
+  }
+}
+
+
+/*---------------------------------
+サービス内容
+---------------------------------*/
+.service{
+  &__items{
+    margin-top: 0;
+  }
+  &::after {
+    border-top: 40px solid transparent; 
+    border-left: 100vw - $header-width transparent; 
+    border-right: 100vw - $header-width solid $grey; 
+    border-bottom: 40px solid $grey;
+  }
+}
+
+
+
+/*---------------------------------
+自己紹介
+---------------------------------*/
+.about{
+  &::after {
+    border-top: 40px solid transparent; 
+    border-right: 100vw - $header-width transparent; 
+    border-left: 100vw - $header-width solid $white; 
+    border-bottom: 40px solid $white;
+  }
+}
+
+
+/*---------------------------------
+自己紹介
+---------------------------------*/
+.price{
+  &::after {
+    border-top: 40px solid transparent; 
+    border-left: 100vw - $header-width transparent; 
+    border-right: 100vw - $header-width solid $grey; 
+    border-bottom: 40px solid $grey;
+  }
+}
+
+
+/*---------------------------------
+制作実績
+---------------------------------*/
+.work{
+  &::after {
+    border-top: 40px solid transparent; 
+    border-right: 100vw - $header-width transparent; 
+    border-left: 100vw - $header-width solid $white; 
+    border-bottom: 40px solid $white;
+  }
+}
+
+}
+
+
+
+//スマホ
+@media (max-width:550px){
+
+/*---------------------------------
+トップビュー
+---------------------------------*/
+  .top-view{
+
+    &__btn{
+      $diameter:120px;
+      width:$diameter;
+      height: $diameter;
+      line-height: $diameter;
+    }
+  }
+
+/*---------------------------------
+自己紹介
+---------------------------------*/
+.about{
+  &__table{
+    width:95%;
+    &-item{
+      width:30%;
+    }
+    &-value{
+      width:70%;
+    }
+  }
+}
+.history{
+  &__year{
+    font-size: 16px;
+  }
+  &__detail{
+    font-size: 13px;
+  }
+}
+
+
+/*---------------------------------
+料金
+---------------------------------*/
+.tbl-l{
+  display: block;
+}
+.price{
+  &__table-area{
+    p{
+      text-align: left;
+    }
+    table{
+      td{
+        padding-top: 10px;
+        line-height: 1.5;
+      }
+      tr{
+        height:7rem;
+        line-height: 1.7rem;
+        align-items: center;
+      }
+    }
+  }
+}
+
+/*---------------------------------
+制作実績
+---------------------------------*/
+.work{
+  &__btn-area{
+    display: none
+  }
+  &__area{
+    flex-direction: column;
+    margin-top: 30px;
+  }
+}
+.article{
+  margin: 0 auto 50px;
+  width:60%;
+  min-width:300px;
+}
+
+
+/*---------------------------------
+問い合わせ
+---------------------------------*/
+.contact{
+  &__exp{
+    margin-top: 40px;
+    text-align: left;
+  }
+  &__form{
+    width: 90%;
+    margin-bottom: 0;
+    .form-area{
+      flex-direction: column;
+    }
+    br{
+      display: none;
+    }
+    input, textarea{
+      margin-top: 5px;
+      width:100%;
+      padding: 5px;
+    }
+    .submit-btn{
+      margin-top: 30px;
+    }
+  }
+}
+
+
+/*---------------------------------
+制作物個別ページ
+---------------------------------*/
+.work-single{
+  &__container{
+    padding: 10px;
+  }
+  &__summary{
+    padding:10px;
+  }
+}
+
+}
+
+
+
+//スマホ
+@media (max-width:500px){
+
+  /*---------------------------------
+  トップビュー
+  ---------------------------------*/
+  .top-view{
+    &__title{
+      font-size: 4.5rem;
+    }
+    &__sub-title{
+      margin-top: 2rem;
+      font-size: 2.5rem;
+    }
+    &__btn{
+      bottom:60px;
+      left:53%;
+    }
   }
 }

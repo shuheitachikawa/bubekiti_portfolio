@@ -8,7 +8,17 @@ var topviewWidth = $('.top-view').width();
 
 //var waveWidth = container.offsetWidth;  // Wave SVG width (usually container width)
 var waveWidth = $('.top-view').height();  //波の幅をトップビューエリアの高さに設定
-var waveHeight = topviewWidth * 0.5;                   // Position from the top of container
+
+if(window.matchMedia( "(max-width: 330px)" ).matches){
+  var waveHeight = topviewWidth * 0.3; // Position from the top of 
+}else if (window.matchMedia( "(max-width: 500px)" ).matches){
+  var waveHeight = topviewWidth * 0.37; // Position from the top of 
+}else if (window.matchMedia( "(max-width: 690px)" ).matches) {
+  var waveHeight = topviewWidth * 0.43; // Position from the top of container
+}else{
+  var waveHeight = topviewWidth * 0.5; // Position from the top of container
+};
+
 var waveDelta = 30;                     // Wave amplitude
 var speed = 0.2;                        // Wave animation speed
 var wavePoints = 5;                     // How many point will be used to compute our wave

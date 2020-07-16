@@ -1,12 +1,13 @@
   <?php get_header(); ?>
 
   
-  <section class="top-view key" id="top-t">
-    <h1><p class="top-view__title">Bubekiti<span class="top-view__title--kana">[ぶべきち]</span></p><p class="top-view__sub-title">Web creating</p></h1>
-    <svg class="top-view__svg"><path id="wave"></svg>
-    <button class="top-view__btn">Welcome</button>
+  <section class="top-view key " id="top-t">
+    <h1 class="animated fadeIn"><p class="top-view__title">Bubekiti</p><p class="top-view__sub-title">Web creating</p></h1>
+    <svg class="top-view__svg animated fadeIn"><path id="wave"></svg>
+    <button class="top-view__btn  animated fadeIn">Welcome</button>
   </section>
   
+
 
   <div class="scroll-area">
 
@@ -68,9 +69,9 @@
             </tr>
             <tr>
               <td class="about__table-item">保有スキル</td>
-              <td class="about__skills">コーディング : HTML/CSS/Sass/JavaScript<br>
-                  サイト構築 : WordPress<br>
-                  デザインツール : XD/Photoshop(デザインデータからの書き出し)
+              <td class="about__skills">コーディング : <br class="tbl-l">HTML/CSS/Sass/JavaScript<br>
+                  サイト構築 : <br class="tbl-l">WordPress<br>
+                  デザインツール : <br class="tbl-l">XD/Photoshop<br class="tbl-l">(デザインデータからの書き出し)
               </td>
             </tr>
             <tr>
@@ -83,19 +84,19 @@
             </tr>
           </table>
         </div>
-        <div class="about__history history animated">
+        <div class="about__history history">
 
         <?php
           $cf_group = SCF::get('about',13);
           foreach ($cf_group as $field_name => $field_value){
         ?>
 
-          <div class="history__item">
+          <div class="history__item animated">
             <p class="history__year"><?php echo $field_value['time-ab']; ?></p>
             <p class="history__detail"><?php echo nl2br($field_value['text-ab']); ?></p>
           </div>
 
-          <div class="history__arrow"></div>
+          <div class="history__arrow animated"></div>
           <?php }; ?>
         </div>
       </div>
@@ -144,7 +145,8 @@
               <?php endforeach; ?>
           </ul>
         </div>
-        <div class="work__area">
+
+        <div class="work__area animated">
           <?php
             if($work_posts->have_posts()):
               while($work_posts->have_posts()):
@@ -152,7 +154,7 @@
                 $product_terms = wp_get_object_terms( $post->ID,  'work_filter' );                
           ?>
                   
-          <article class="work__item article animated <?php foreach( $product_terms as $term ): echo $term->name; echo" "; endforeach; ?>">
+          <article class="work__item article  <?php foreach( $product_terms as $term ): echo $term->name; echo" "; endforeach; ?>">
 
             <a href="<?php the_permalink(); ?>" class="article__link">
               <div class="article__img">

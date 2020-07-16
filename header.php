@@ -37,7 +37,7 @@
 <body <?php body_class(); ?>>
 
   <header>
-    <nav class="global-nav">
+    <nav class="global-nav  animated fadeIn">
       <ul class="global-nav__list">
         <li class="global-nav__item">
           <a href="/#top-t" id="top-view">TOP</a>
@@ -60,3 +60,9 @@
       </ul>
     </nav>
   </header>
+
+  <div class="menu-trigger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
