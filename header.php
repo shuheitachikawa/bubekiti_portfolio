@@ -34,17 +34,29 @@
 
   <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
 
   <header>
     <nav class="global-nav">
-      <ul>
-        <li><a href="">TOP</a></li>
-        <li><a href="">SERVICE</a></li>
-        <li><a href="">ABOUT</a></li>
-        <li><a href="">PRICE</a></li>
-        <li><a href="">WORKS</a></li>
-        <li><a href="">CONTACT</a></li>
+      <ul class="global-nav__list">
+        <li class="global-nav__item">
+          <a href="/#top-t" id="top-view">TOP</a>
+        </li>
+        <li class="global-nav__item">
+          <a href="/#service-t" id="service">SERVICE</a>
+        </li>
+        <li class="global-nav__item">
+          <a href="/#about-t" id="about">ABOUT</a>
+        </li>
+        <li class="global-nav__item">
+          <a href="/#price-t" id="price">PRICE</a>
+        </li>
+        <li class="global-nav__item">
+          <a href="/#work-t" id="work">WORKS</a>
+        </li>
+        <li class="global-nav__item">
+          <a href="/#contact-t" id="contact">CONTACT</a>
+        </li>
       </ul>
     </nav>
   </header>

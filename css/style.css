@@ -22,6 +22,19 @@ html {
   font-weight: 600;
 }
 
+.title-emphasis {
+  margin-top: 20px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  text-align: center;
+  display: block;
+  width: 0px;
+  height: 3px;
+  background-color: #002C81;
+  border-radius: 1px;
+}
+
 .ja-title {
   display: block;
   margin-top: 20px;
@@ -86,16 +99,63 @@ header .global-nav ul {
   justify-content: space-between;
 }
 
-header .global-nav ul li {
+header .global-nav ul li, header .global-nav ul a {
+  display: inline-block;
   font-size: 1.5rem;
   letter-spacing: 0.2rem;
+  position: relative;
+  transition: .3s;
+}
+
+header .global-nav ul li:hover, header .global-nav ul a:hover {
+  opacity: 0.8;
+}
+
+header .global-nav ul li:hover::after, header .global-nav ul a:hover::after {
+  transition: .5s;
+  width: 110%;
+}
+
+header .global-nav ul a::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 2px;
+  border-radius: 1px;
+  background-color: #fff;
+  bottom: -6px;
+  left: 50%;
+  transform: translate(-50%);
+  text-align: center;
 }
 
 .scroll-area {
   position: absolute;
-  top: 100vh;
   width: 80vw;
   margin-left: 20vw;
+}
+
+body.home .scroll-area {
+  top: 100vh;
+}
+
+/*---------------------------------
+フッター
+---------------------------------*/
+footer {
+  color: #fff;
+  background-color: #4b4b4b;
+  background-color: #002C81;
+  height: 90px;
+  text-align: center;
+}
+
+footer .footer__icon {
+  margin: 10px 0;
+}
+
+footer .copy-write {
+  font-size: 1.1rem;
 }
 
 /*---------------------------------
@@ -179,8 +239,8 @@ header .global-nav ul li {
 ---------------------------------*/
 .service {
   background-color: #fff;
-  min-height: 100vh;
-  padding: 80px 0;
+  padding: 0 0 180px;
+  padding-top: 80px;
   position: relative;
 }
 
@@ -247,17 +307,29 @@ header .global-nav ul li {
   text-align: center;
 }
 
+.service::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-top: 60px solid transparent;
+  border-left: 80vw transparent;
+  border-right: 80vw solid #f5f5f5;
+  border-bottom: 60px solid #f5f5f5;
+}
+
 /*---------------------------------
 自己紹介
 ---------------------------------*/
 .about {
   background-color: #f5f5f5;
-  min-height: 100vh;
-  padding: 80px 0;
+  padding: 0 0 180px;
+  position: relative;
 }
 
 .about__intro {
-  margin-top: 50px;
+  margin-top: 80px;
 }
 
 .about__table {
@@ -277,6 +349,18 @@ header .global-nav ul li {
 
 .about__table__skills {
   line-height: 0;
+}
+
+.about::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-top: 60px solid transparent;
+  border-right: 80vw transparent;
+  border-left: 80vw solid #fff;
+  border-bottom: 60px solid #fff;
 }
 
 .history {
@@ -299,13 +383,27 @@ header .global-nav ul li {
   text-align: center;
 }
 
+.history__arrow {
+  content: "";
+  height: 15px;
+  width: 15px;
+  border-top: solid 3px #333333;
+  border-right: solid 3px #333333;
+  transform: rotate(45deg);
+  margin: auto 0;
+}
+
+.history__arrow:last-child {
+  display: none;
+}
+
 /*---------------------------------
 料金
 ---------------------------------*/
 .price {
   background-color: #fff;
-  min-height: 100vh;
-  padding: 80px 0;
+  padding: 0 0 180px;
+  position: relative;
 }
 
 .price__exp {
@@ -313,22 +411,74 @@ header .global-nav ul li {
   text-align: center;
 }
 
+.price__table-area {
+  margin: 80px auto 0;
+  width: 100%;
+  max-width: 700px;
+}
+
+.price__table-area p {
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 1.7;
+}
+
+.price__table-area .wp-block-table {
+  margin-top: 20px;
+  box-shadow: 6px 6px 18px #bebebe;
+}
+
+.price__table-area table {
+  font-size: 1.7rem;
+  position: relative;
+}
+
+.price__table-area table td {
+  padding-left: 20px;
+}
+
+.price__table-area table tr {
+  line-height: 10rem;
+}
+
+.price__table-area table .price__item {
+  width: 60%;
+}
+
+.price__table-area table .price__cost {
+  width: 40%;
+  font-weight: bold;
+}
+
+.price__table-area table, .price__table-area tr, .price__table-area td {
+  border: 1px solid #333333;
+}
+
+.price::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-top: 60px solid transparent;
+  border-left: 80vw transparent;
+  border-right: 80vw solid #f5f5f5;
+  border-bottom: 60px solid #f5f5f5;
+}
+
 /*---------------------------------
 制作実績
 ---------------------------------*/
 .work {
   background-color: #f5f5f5;
-  min-height: 100vh;
-  padding: 80px 0;
+  padding: 0 0 180px;
   height: auto;
+  position: relative;
 }
 
 .work__btn-area {
   margin-top: 70px;
   text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 1.1rem;
 }
 
@@ -338,18 +488,27 @@ header .global-nav ul li {
   margin-right: 30px;
 }
 
-.work__btn {
+.work__btn-list {
+  display: inline-block;
+}
+
+.work__btn-item {
+  display: inline-block;
+}
+
+.work__btn-item {
   width: 90px;
   line-height: 3;
   border-radius: 3px;
   margin: 0 10px;
+  transition: .2s;
 }
 
-.work__btn:hover {
+.work__btn-item:hover {
   font-weight: 600;
 }
 
-.work__btn.active {
+.work__btn-item.active {
   font-weight: 600;
   background-color: #c5cfe4;
 }
@@ -366,8 +525,21 @@ header .global-nav ul li {
   width: 30%;
 }
 
+.work::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-top: 60px solid transparent;
+  border-right: 80vw transparent;
+  border-left: 80vw solid #fff;
+  border-bottom: 60px solid #fff;
+}
+
 .article {
   width: 30%;
+  background-color: #fff;
   box-shadow: 6px 6px 18px #9c9c9c;
   text-align: center;
   margin-bottom: 50px;
@@ -386,35 +558,224 @@ header .global-nav ul li {
   top: 1px;
 }
 
+.article__img {
+  overflow: hidden;
+}
+
+.article__img img {
+  transition: .3s;
+}
+
+.article__img img:hover {
+  transform: scale(1.02);
+}
+
+.article__non-active {
+  opacity: 30%;
+}
+
 /*---------------------------------
 問い合わせ
 ---------------------------------*/
 .contact {
   background-color: #fff;
-  min-height: 100vh;
-  padding: 80px 0;
+  padding: 0 0 180px;
+  margin-bottom: 0px;
 }
 
 .contact__exp {
-  margin-top: 50px;
+  margin-top: 80px;
   text-align: center;
+}
+
+.contact__form {
+  font-size: 1.5rem;
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.contact__form .submit-btn {
+  margin: 50px auto 0;
+  width: 100px;
+}
+
+.contact__form .submit-btn input {
+  width: 100px;
+  text-align: center;
+  transition: .2s;
+}
+
+.contact__form .submit-btn input:hover {
+  font-weight: 600;
+  color: #fff;
+  background-color: #002C81;
+}
+
+.contact__form .form-area {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.contact input, .contact textarea {
+  display: inline-block;
+  width: 450px;
+  max-width: 450px;
+  background-color: #f5f5f5;
+  line-height: 1.7;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.contact input:focus, .contact textarea:focus {
+  border: 2px solid #002C81;
 }
 
 /*---------------------------------
-フッター
+制作物個別ページ
 ---------------------------------*/
-footer {
-  color: #fff;
-  background-color: #4b4b4b;
-  background-color: #002C81;
-  height: 90px;
+.work-single {
+  min-height: calc(100vh - 90px);
+  background-color: #f5f5f5;
+  padding: 50px 0;
+}
+
+.work-single__container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 35px;
   text-align: center;
 }
 
-footer .footer__icon {
-  margin: 10px 0;
+.work-single__time {
+  text-align: left;
+  font-size: 1.2rem;
+  display: block;
 }
 
-footer .copy-write {
-  font-size: 1.1rem;
+.work-single__title {
+  display: inline-block;
+  font-size: 2.5rem;
+  margin: 20px auto 10px;
+  position: relative;
+}
+
+.work-single__title::after {
+  content: "";
+  width: 100%;
+  height: 5px;
+  background-color: #002C81;
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(to right, #002C81 0%, #fff 100%);
+  border-radius: 2px;
+}
+
+.work-single__thumbnail-img {
+  margin-top: 30px;
+}
+
+.work-single__summary {
+  text-align: left;
+  background-color: #f5f5f5;
+  margin-top: 20px;
+  padding: 20px;
+  font-size: 1.6rem;
+  line-height: 2;
+  border: 1px dashed #002C81;
+}
+
+.work-single__area {
+  text-align: left;
+  font-size: 1.6rem;
+  line-height: 1.8;
+}
+
+.work-single__area h2, .work-single__area h3, .work-single__area h4, .work-single__area p, .work-single__area ul {
+  margin: 30px 0;
+}
+
+.work-single__area h2 {
+  font-size: 2.5rem;
+  padding: 20px 40px 18px;
+  background-color: #f5f5f5;
+  border-left: 9px solid #002C81;
+}
+
+.work-single__area h3 {
+  font-size: 2rem;
+  border-left: 9px solid #002C81;
+  font-weight: 300;
+  padding: 0 15px;
+  font-weight: 600;
+}
+
+.work-single__area a {
+  color: blue;
+  font-weight: 600;
+}
+
+.work-single__area a:hover {
+  text-decoration: underline;
+}
+
+.work-single__area ul {
+  list-style: none;
+  margin-left: 40px;
+}
+
+.work-single__area li::before {
+  content: "・ ";
+  color: #002C81;
+  font-weight: 600;
+}
+
+.work-single__home {
+  display: inline-block;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.work-single__home:hover {
+  text-decoration: underline;
+}
+
+.summary__table {
+  width: 100%;
+}
+
+.summary__table tbody {
+  width: 100%;
+}
+
+.pager {
+  margin-top: 50px;
+  border-top: 1px solid #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pager .prev, .pager .next {
+  margin: 15px 0;
+}
+
+.pager .pager__btn, .pager .pager__txt {
+  display: inline-block;
+  font-size: 1.4rem;
+}
+
+.pager .pager__txt {
+  color: blue;
+}
+
+.pager .pager__txt:hover {
+  text-decoration: underline;
+}
+
+.pager .next {
+  margin-right: 0;
+  margin-left: auto;
 }
