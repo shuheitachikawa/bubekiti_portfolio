@@ -66,6 +66,7 @@ img {
 }
 
 .menu-trigger {
+  display: none;
   z-index: 9999;
   position: fixed;
   top: 25px;
@@ -197,11 +198,11 @@ footer {
 }
 
 footer .footer__icon {
-  margin: 10px 0;
+  margin: 20px 0;
 }
 
 footer .copy-write {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 /*---------------------------------
@@ -419,7 +420,7 @@ footer .copy-write {
 }
 
 .history__item {
-  width: 30%;
+  width: 29%;
 }
 
 .history__year {
@@ -429,7 +430,8 @@ footer .copy-write {
 
 .history__detail {
   margin-top: 30px;
-  text-align: center;
+  text-align: left;
+  line-height: 1.5;
 }
 
 .history__arrow {
@@ -1050,11 +1052,17 @@ footer .copy-write {
   .about__table-value {
     width: 70%;
   }
+  .history__item {
+    width: 95%;
+  }
   .history__year {
     font-size: 16px;
   }
   .history__detail {
     font-size: 13px;
+  }
+  .history__arrow {
+    margin-left: 20px;
   }
   /*---------------------------------
 料金

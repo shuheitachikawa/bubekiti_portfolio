@@ -146,3 +146,19 @@ $(function(){
     }
   });
 });
+
+
+//100vhスクロールしてからハンバーガー表示
+var windowHeight = $(window).height();
+function headerPosition(){
+  if (window.matchMedia( "(max-width: 690px)" ).matches) {
+    if($(window).scrollTop() >= windowHeight){
+      $('.menu-trigger').fadeIn(500);
+    }else{
+      $('.menu-trigger').fadeOut(500);
+    };
+  };
+};
+
+$(window).on('scroll', headerPosition);
+

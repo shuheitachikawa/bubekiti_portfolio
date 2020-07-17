@@ -75,6 +75,7 @@ img{
 
 //ハンバーガーメニュー
 .menu-trigger{
+  display: none;
   z-index: 9999;
   position: fixed;
   top:25px;
@@ -198,10 +199,10 @@ footer{
   height:90px;
   text-align: center;
   .footer__icon{
-    margin: 10px 0;
+    margin: 20px 0;
   }
   .copy-write{
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }
 
@@ -396,7 +397,7 @@ footer{
   display: flex;
   justify-content: space-between;
   &__item{
-    width: 30%;
+    width: 29%;
   }
   &__year{
     text-align: center;
@@ -404,7 +405,8 @@ footer{
   }
   &__detail{
     margin-top: 30px;
-    text-align: center;
+    text-align: left;
+    line-height: 1.5;
   }
   &__arrow{
     content:"";
@@ -916,7 +918,7 @@ header{
   background-color: $blue;
   z-index: 1000;
   opacity:70%;
-  .global-nav{
+  .global-nav{ 
     height:80%;
     margin-top: 30%;
   }
@@ -1035,11 +1037,17 @@ header{
   }
 }
 .history{
+  &__item{
+    width:95%;
+  }
   &__year{
     font-size: 16px;
   }
   &__detail{
     font-size: 13px;
+  }
+  &__arrow{
+    margin-left: 20px;
   }
 }
 
